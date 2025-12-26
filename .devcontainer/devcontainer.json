@@ -1,0 +1,25 @@
+{
+  "name": "Spring Boot DevContainer",
+  "image": "mcr.microsoft.com/devcontainers/java:1-17-bookworm",
+
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": { "version": "25" },
+    "ghcr.io/devcontainers/features/node:1.6.3": { "version": "latest" }
+  },
+
+  "forwardPorts": [8080],
+  "remoteUser": "vscode",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vmware.vscode-boot-dev-pack",
+        "vscjava.vscode-lombok",
+        "donjayamanne.githistory",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  },
+  "postCreateCommand": "bash -lc 'source /usr/local/sdkman/bin/sdkman-init.sh && sdk install maven && npm install -g @anthropic-ai/claude-code'"
+}
