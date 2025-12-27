@@ -5,10 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
-
 @Entity
-@Table(name = "films")
+@Table(name = "film")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,16 +14,16 @@ public class FilmEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "film_id")
     private Long filmId;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
-    private String director;
+    @Column( columnDefinition = "text")
+    private String description;
 
-    @Column(name = "release_year", nullable = false)
-    private Date releaseYear;
+    @Column(name = "release_year")
+    private Integer releaseYear;
 
 }

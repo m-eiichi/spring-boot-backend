@@ -4,7 +4,7 @@ import com.example.demo.films.application.dto.FilmDTO;
 import com.example.demo.films.application.mapper.FilmApplicationMapper;
 import com.example.demo.films.domain.Film;
 import com.example.demo.films.domain.FilmRepository;
-import com.example.demo.films.domain.vo.FilmDirector;
+import com.example.demo.films.domain.vo.FilmDescription;
 import com.example.demo.films.domain.vo.FilmReleaseYear;
 import com.example.demo.films.domain.vo.FilmTitle;
 import lombok.RequiredArgsConstructor;
@@ -27,11 +27,11 @@ public class CreateFilmUseCase {
     /**
      * フィルムを作成
      */
-    public FilmDTO execute(String title, String director, Date releaseYear) {
+    public FilmDTO execute(String title, String description, Integer releaseYear) {
         Film film = Film.create(
                 filmRepository.nextIdentity(),
                 new FilmTitle(title),
-                new FilmDirector(director),
+                new FilmDescription(description),
                 new FilmReleaseYear(releaseYear)
         );
 

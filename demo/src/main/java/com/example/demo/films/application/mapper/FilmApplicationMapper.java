@@ -18,7 +18,7 @@ public interface FilmApplicationMapper {
      */
     @Mapping(source = "filmId.value", target = "filmId")
     @Mapping(source = "title.value", target = "title")
-    @Mapping(source = "director.value", target = "director")
+    @Mapping(source = "description.value", target = "description")
     @Mapping(source = "releaseYear.value", target = "releaseYear")
     FilmDTO toDTO(Film film);
 

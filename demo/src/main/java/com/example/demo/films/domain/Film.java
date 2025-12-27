@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.AccessLevel;
 import com.example.demo.films.domain.vo.FilmId;
 import com.example.demo.films.domain.vo.FilmTitle;
-import com.example.demo.films.domain.vo.FilmDirector;
+import com.example.demo.films.domain.vo.FilmDescription;
 import com.example.demo.films.domain.vo.FilmReleaseYear; 
 
 @Getter
@@ -13,17 +13,17 @@ import com.example.demo.films.domain.vo.FilmReleaseYear;
 public class Film {
     private FilmId filmId;
     private FilmTitle title;
-    private FilmDirector director;
+    private FilmDescription description;
     private FilmReleaseYear releaseYear;
 
     /**
      * 新規フィルム作成（ファクトリーメソッド）
      */
-    public static Film create(FilmId filmId, FilmTitle title, FilmDirector director, FilmReleaseYear releaseYear) {
+    public static Film create(FilmId filmId, FilmTitle title, FilmDescription description, FilmReleaseYear releaseYear) {
         Film film = new Film();
         film.filmId = filmId;
         film.title = title;
-        film.director = director;
+        film.description = description;
         film.releaseYear = releaseYear;
         return film;
     }
@@ -31,11 +31,11 @@ public class Film {
     /**
      * 既存フィルムの再構成（リポジトリから取得時に使用）
      */
-    public static Film reconstruct(FilmId filmId, FilmTitle title, FilmDirector director, FilmReleaseYear releaseYear) {
+    public static Film reconstruct(FilmId filmId, FilmTitle title, FilmDescription description, FilmReleaseYear releaseYear) {
         Film film = new Film();
         film.filmId = filmId;
         film.title = title;
-        film.director = director;
+        film.description = description;
         film.releaseYear = releaseYear;
         return film;
     }

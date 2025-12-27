@@ -1,7 +1,7 @@
 package com.example.demo.films.infrastructure.persistence.mapper;
 
 import com.example.demo.films.domain.Film;
-import com.example.demo.films.domain.vo.FilmDirector;
+import com.example.demo.films.domain.vo.FilmDescription;
 import com.example.demo.films.domain.vo.FilmId;
 import com.example.demo.films.domain.vo.FilmReleaseYear;
 import com.example.demo.films.domain.vo.FilmTitle;
@@ -24,7 +24,7 @@ public class FilmPersistenceMapper {
             entity.setFilmId(film.getFilmId().getValue());
         }
         entity.setTitle(film.getTitle().getValue());
-        entity.setDirector(film.getDirector().getValue());
+        entity.setDescription(film.getDescription().getValue());
         entity.setReleaseYear(film.getReleaseYear().getValue());
         // entity.setActive(true);
 
@@ -42,7 +42,7 @@ public class FilmPersistenceMapper {
         return Film.reconstruct(
             new FilmId(entity.getFilmId()),
             new FilmTitle(entity.getTitle()),
-            new FilmDirector(entity.getDirector()),
+            new FilmDescription(entity.getDescription()),
             new FilmReleaseYear(entity.getReleaseYear())
         );
     }

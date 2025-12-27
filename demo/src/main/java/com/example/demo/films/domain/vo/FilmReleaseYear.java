@@ -2,7 +2,6 @@ package com.example.demo.films.domain.vo;
 
 import lombok.Getter;
 
-import java.sql.Date;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -11,9 +10,9 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 public class FilmReleaseYear {
-    private final Date value;
+    private final Integer value;
 
-    public FilmReleaseYear(Date value) {
+    public FilmReleaseYear(Integer value) {
         if (value == null) {
             throw new IllegalArgumentException("FilmReleaseYear must not be null");
         }
