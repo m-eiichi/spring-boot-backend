@@ -55,14 +55,12 @@ src/
   ├ java/
   │   └ com.example.demo/
   │        ├ domain/                        ← ドメインモデル（ビジネスルール）
-  │        │    ├ model/                    ← Entity, ValueObject, AggregateRoot
-  │        │    │    └ {aggregate}/         ← 集約ごとにフォルダ分け
-  │        │    │        ├ {Aggregate}.java     ← 集約ルート
-  │        │    │        ├ {Aggregate}Id.java   ← 値オブジェクト
-  │        │    │        └ ...
-  │        │    ├ repository/               ← Repository インターフェース
-  │        │    ├ service/                  ← ドメインサービス（オプション）
-  │        │    └ exception/                ← ドメイン例外（オプション）
+  │        │    └ {aggregate}/              ← 集約ごとにフォルダ分け
+  │        │        ├ {Aggregate}.java          ← 集約ルート（JPAアノテーションなし）
+  │        │        ├ {Aggregate}Id.java        ← 値オブジェクト
+  │        │        ├ {Aggregate}Repository.java ← リポジトリインターフェース
+  │        │        ├ {Aggregate}DomainService.java ← ドメインサービス（オプション）
+  │        │        └ ...                        ← その他の値オブジェクトなど
   │        │
   │        ├ application/                   ← ユースケース層
   │        │    └ usecase/
@@ -120,15 +118,27 @@ src/
 #### 構成例（実装済み）
 ```
 domain/
-  ├ model/
-  │   └ user/
-  │       ├ User.java               ← 集約ルート（JPAアノテーションなし）
-  │       ├ UserId.java             ← 値オブジェクト
-  │       ├ UserName.java           ← 値オブジェクト
-  │       ├ Email.java              ← 値オブジェクト
-  │       └ UserStatus.java         ← 列挙型
-  └ repository/
-      └ UserRepository.java         ← インターフェース（永続化の抽象）
+  ├ user/
+  │   ├ User.java                   ← 集約ルート（JPAアノテーションなし）
+  │   ├ UserId.java                 ← 値オブジェクト
+  │   ├ UserName.java               ← 値オブジェクト
+  │   ├ Email.java                  ← 値オブジェクト
+  │   ├ UserStatus.java             ← 列挙型
+  │   ├ UserRepository.java         ← インターフェース（永続化の抽象）
+  │   └ UserDomainService.java      ← ドメインサービス（オプション）
+  ├ film/
+  │   ├ Film.java                   ← 集約ルート（JPAアノテーションなし）
+  │   ├ FilmId.java                 ← 値オブジェクト
+  │   ├ FilmTitle.java              ← 値オブジェクト
+  │   ├ FilmDescription.java        ← 値オブジェクト
+  │   ├ FilmReleaseYear.java        ← 値オブジェクト
+  │   └ FilmRepository.java         ← インターフェース（永続化の抽象）
+  └ order/
+      ├ Order.java                  ← 集約ルート（JPAアノテーションなし）
+      ├ OrderId.java                ← 値オブジェクト
+      ├ OrderItem.java              ← エンティティ
+      ├ OrderRepository.java        ← インターフェース（永続化の抽象）
+      └ OrderDomainService.java     ← ドメインサービス（オプション）
 ```
 
 #### 重要な原則
